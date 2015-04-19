@@ -21,7 +21,7 @@ namespace UnityStandardAssets._2D
         protected Rigidbody2D m_Rigidbody2D;
         [SerializeField] protected bool m_FacingRight = false;  // For determining which way the player is currently facing.
 
-        protected float m_health = 100;       // The amount of health remaining
+        [SerializeField] protected float m_health = 100;       // The amount of health remaining
         protected bool m_damaged = false;     // whether is frozen due to damage
         protected Attack m_attack;            // the script corresponding to the attack
 
