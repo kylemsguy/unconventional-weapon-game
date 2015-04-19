@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UnityStandardAssets._2D
 {
-    public class PlatformerCharacter2D : MonoBehaviour
+    public abstract class PlatformerCharacter2D : MonoBehaviour
     {
         [SerializeField] private float m_MaxSpeed = 10f;                    // The fastest the player can travel in the x axis.
         [SerializeField] private float m_JumpForce = 400f;                  // Amount of force added when the player jumps.
@@ -117,6 +117,10 @@ namespace UnityStandardAssets._2D
             }
         }
 
+        public virtual void Attack(int type)
+        {
+            // to be overridden
+        }
 
         private void Flip()
         {
