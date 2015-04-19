@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace UnityStandardAssets._2D
 {
+    [RequireComponent(typeof(Attack))]
     public abstract class PlatformerCharacter2D : MonoBehaviour
     {
         [SerializeField] private float m_MaxSpeed = 10f;                    // The fastest the player can travel in the x axis.
@@ -22,6 +23,7 @@ namespace UnityStandardAssets._2D
 
         protected float m_health = 100;       // The amount of health remaining
         protected bool m_damaged = false;     // whether is frozen due to damage
+        protected Attack m_attack;            // the script corresponding to the attack
 
         public void Damage(float amount)
         {
@@ -39,12 +41,13 @@ namespace UnityStandardAssets._2D
             m_CeilingCheck = transform.Find("CeilingCheck");
             m_Anim = GetComponent<Animator>();
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
+            m_attack = GetComponent<Attack>();
 
-            if (!m_FacingRight)
+            /*if (!m_FacingRight)
             {
                 Flip();
                 m_FacingRight = false;
-            }
+            }*/
         }
 
 
