@@ -10,9 +10,6 @@ public class FighterCharacter : PlatformerCharacter2D {
         print(damage);
     }
 
-    protected override void Awake()
-    {
-        base.Awake();
-    }
+    protected override void Awake() { base.Awake(); }
     protected override void FixedUpdate() { base.FixedUpdate(); }
 }

@@ -12,6 +12,7 @@ namespace UnityStandardAssets._2D
 
         [SerializeField] private string m_JumpButton = "Jump_P1";
         [SerializeField] private string m_CrouchButton = "Crouch_P1";
+        [SerializeField] private string m_AttackButton = "Attack_P1";
         [SerializeField] private string m_HorizontalAxis = "Horizontal_P1";
 
 
@@ -35,9 +36,10 @@ namespace UnityStandardAssets._2D
         {
             // Read the inputs.
             bool crouch = CrossPlatformInputManager.GetButton(m_CrouchButton);//Input.GetKey(KeyCode.S);
+            bool attack = CrossPlatformInputManager.GetButton(m_AttackButton);
             float h = CrossPlatformInputManager.GetAxis(m_HorizontalAxis);
             // Pass all parameters to the character control script.
-            m_Character.Move(h, crouch, m_Jump);
+            m_Character.Move(h, crouch, attack, m_Jump);
             m_Jump = false;
         }
     }
