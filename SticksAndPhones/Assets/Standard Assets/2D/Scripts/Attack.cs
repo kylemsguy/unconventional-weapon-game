@@ -2,5 +2,5 @@
 using System.Collections;
 
 public interface Attack {
-    void DoAttack(float direction);
+    void DoAttack(int type, BoxCollider2D coll);
 }

@@ -7,7 +7,7 @@ public class HPController : MonoBehaviour {
     [SerializeField] private PlatformerCharacter2D player1;
     [SerializeField] private PlatformerCharacter2D player2;
 
-	// Use this for initializationS
+	// Use this for initialization
 	void Awake() {
         player1 = (PlatformerCharacter2D)GameObject.Find("Player1").GetComponent<PlatformerCharacter2D>();
         player2 = (PlatformerCharacter2D)GameObject.Find("Player2").GetComponent<PlatformerCharacter2D>();

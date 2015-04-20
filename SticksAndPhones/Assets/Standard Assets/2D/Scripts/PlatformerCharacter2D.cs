@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace UnityStandardAssets._2D
@@ -24,6 +25,8 @@ namespace UnityStandardAssets._2D
         [SerializeField] protected float m_health = 100;       // The amount of health remaining
         protected bool m_damaged = false;     // whether is frozen due to damage
         protected Attack m_attack;            // the script corresponding to the attack
+
+        [SerializeField] protected Collider2D punch;
 
         public void Damage(float amount)
         {
@@ -69,6 +72,16 @@ namespace UnityStandardAssets._2D
             m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
         }
 
+        IEnumerator attack_anim()
+        {
+            Vector3 original = punch.GetComponent<BoxCollider2D>().transform.localPosition;
+            punch.transform.rotation = Quaternion.Euler(0, 0, 90);
+            punch.GetComponent<BoxCollider2D>().transform.localPosition = new Vector3(0.3f, 0f);
+            Attack(0, punch.GetComponent<BoxCollider2D>());
+            yield return new WaitForEndOfFrame();
+            punch.transform.rotation = Quaternion.Euler(0, 0, 0);
+            punch.GetComponent<BoxCollider2D>().transform.localPosition = original;
+        }
 
         public void Move(float move, bool crouch, bool attack, bool jump)
         {
@@ -122,11 +135,11 @@ namespace UnityStandardAssets._2D
             // If player is attacking...
             if (attack)
             {
-                Attack(0);
+                StartCoroutine(attack_anim());
             }
         }
 
-        public virtual void Attack(int type)
+        public virtual void Attack(int type, BoxCollider2D coll)
         {
             // to be overridden
         }
